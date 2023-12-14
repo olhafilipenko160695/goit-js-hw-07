@@ -28,19 +28,31 @@ const images = [
   },
 ];
 
+//Варіант 1 використовуючи document.createElement() і elem.append()
+
+
+// const galeryList = document.querySelector(".gallery");
+
+// const allElements = images.map(({url, alt}) => {
+//   const li = document.createElement('li');
+//   const liImg = document.createElement('img');
+
+//   liImg.src = url;
+//   liImg.alt = alt;
+//   liImg.classList.add("liImg")
+
+//   li.append(liImg);
+  
+  
+//   return li;
+// });
+
+// galeryList.append(...allElements)
+
+// Варіант 2 використовуючи шаблонні рядки elem.insertAdjacentHTML() 
+
 const galeryList = document.querySelector(".gallery");
-const allElements = images.map(({url, alt}) => {
-  const li = document.createElement('li');
-  const liImg = document.createElement('img');
+const allElements = images.map(({url, alt}) =>
+  `<li><img src="${url}" alt="${alt}" class="liImg"></li>`).join(' ');
 
-  liImg.src = url;
-  liImg.alt = alt;
-  liImg.classList.add("liImg")
-
-  li.append(liImg);
-  
-  
-  return li;
-});
-
-galeryList.append(...allElements)
+galeryList.insertAdjacentHTML('afterbegin', allElements);

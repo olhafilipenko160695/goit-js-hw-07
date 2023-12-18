@@ -1,10 +1,8 @@
-const userName = document.querySelector('#name-input');
-userName.addEventListener('input', handlerInput);
+const userName = document.querySelector("#name-input");
+userName.addEventListener("input", onInput);
 
-const inputCurrentValue = document.querySelector('#name-output');
-
-
-function handlerInput(event) {
- inputCurrentValue.textContent = event.currentTarget.value.trim() || 'Anonymous';
+function onInput(event) {
+  const inputCurrentValue = document.querySelector("#name-output");
+  inputCurrentValue.textContent =
+    event.currentTarget.value.trim() || "Anonymous";
 }
-
